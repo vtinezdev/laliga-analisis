@@ -1,0 +1,184 @@
+fichero,columna,tipo,descripcion,fuente,disponible_desde,momento
+partidos.csv,id_partido,INTEGER,Identificador del partido (orden cronológico),Calculado,2012-13,se conoce antes del partido
+partidos.csv,temporada,VARCHAR,"Temporada, p. ej. 2014-15",football-data.co.uk,2012-13,se conoce antes del partido
+partidos.csv,fecha,DATE,Fecha oficial del partido (la de football-data),football-data.co.uk,2012-13,se conoce antes del partido
+partidos.csv,local,VARCHAR,Equipo local,football-data.co.uk,2012-13,se conoce antes del partido
+partidos.csv,visitante,VARCHAR,Equipo visitante,football-data.co.uk,2012-13,se conoce antes del partido
+partidos.csv,goles_local,INTEGER,Goles del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,goles_visitante,INTEGER,Goles del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,resultado,VARCHAR,"En partidos: 1 (gana local), X (empate), 2 (gana visitante). En partidos_equipo: victoria, empate o derrota",football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,tiros_local,INTEGER,Tiros totales del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,tiros_visitante,INTEGER,Tiros totales del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,tiros_puerta_local,INTEGER,Tiros a puerta del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,tiros_puerta_visitante,INTEGER,Tiros a puerta del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,corners_local,INTEGER,Córners del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,corners_visitante,INTEGER,Córners del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,faltas_local,INTEGER,Faltas cometidas del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,faltas_visitante,INTEGER,Faltas cometidas del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,amarillas_local,INTEGER,Tarjetas amarillas del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,amarillas_visitante,INTEGER,Tarjetas amarillas del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,rojas_local,INTEGER,Tarjetas rojas del equipo local,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,rojas_visitante,INTEGER,Tarjetas rojas del equipo visitante,football-data.co.uk,2012-13,se conoce después del partido
+partidos.csv,xg_local,DOUBLE,Goles esperados (calidad de las ocasiones) del equipo local,Understat,2014-15,se conoce después del partido
+partidos.csv,xg_visitante,DOUBLE,Goles esperados (calidad de las ocasiones) del equipo visitante,Understat,2014-15,se conoce después del partido
+partidos.csv,npxg_local,DOUBLE,Goles esperados sin penaltis del equipo local,Understat,2014-15,se conoce después del partido
+partidos.csv,npxg_visitante,DOUBLE,Goles esperados sin penaltis del equipo visitante,Understat,2014-15,se conoce después del partido
+partidos.csv,ppda_pases_local,INTEGER,Pases completados por el rival en su campo (numerador del PPDA). PPDA = suma de pases / suma de acciones; nunca promediar ratios del equipo local,Understat,2014-15,se conoce después del partido
+partidos.csv,ppda_acciones_local,INTEGER,Acciones defensivas del equipo en campo rival (denominador del PPDA) del equipo local,Understat,2014-15,se conoce después del partido
+partidos.csv,ppda_pases_visitante,INTEGER,Pases completados por el rival en su campo (numerador del PPDA). PPDA = suma de pases / suma de acciones; nunca promediar ratios del equipo visitante,Understat,2014-15,se conoce después del partido
+partidos.csv,ppda_acciones_visitante,INTEGER,Acciones defensivas del equipo en campo rival (denominador del PPDA) del equipo visitante,Understat,2014-15,se conoce después del partido
+partidos.csv,pases_profundos_local,INTEGER,"Pases completados a menos de ~20 m de la portería rival, sin centros del equipo local",Understat,2014-15,se conoce después del partido
+partidos.csv,pases_profundos_visitante,INTEGER,"Pases completados a menos de ~20 m de la portería rival, sin centros del equipo visitante",Understat,2014-15,se conoce después del partido
+partidos.csv,puntos_esperados_local,DOUBLE,Puntos esperados según el xG del partido del equipo local,Understat,2014-15,se conoce después del partido
+partidos.csv,puntos_esperados_visitante,DOUBLE,Puntos esperados según el xG del partido del equipo visitante,Understat,2014-15,se conoce después del partido
+partidos.csv,id_understat,VARCHAR,Identificador del partido en Understat (trazabilidad),Understat,2014-15,se conoce antes del partido
+partidos_equipo.csv,id_partido,INTEGER,Identificador del partido (orden cronológico),Calculado,2012-13,se conoce antes del partido
+partidos_equipo.csv,temporada,VARCHAR,"Temporada, p. ej. 2014-15",football-data.co.uk,2012-13,se conoce antes del partido
+partidos_equipo.csv,fecha,DATE,Fecha oficial del partido (la de football-data),football-data.co.uk,2012-13,se conoce antes del partido
+partidos_equipo.csv,equipo,VARCHAR,Equipo de la fila,football-data.co.uk,2012-13,se conoce antes del partido
+partidos_equipo.csv,rival,VARCHAR,Rival del equipo de la fila,football-data.co.uk,2012-13,se conoce antes del partido
+partidos_equipo.csv,condicion,VARCHAR,'local' o 'visitante' para el equipo de la fila,football-data.co.uk,2012-13,se conoce antes del partido
+partidos_equipo.csv,goles_favor,INTEGER,Goles del equipo de la fila,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,goles_contra,INTEGER,Goles del rival,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,resultado,VARCHAR,"En partidos: 1 (gana local), X (empate), 2 (gana visitante). En partidos_equipo: victoria, empate o derrota",football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,puntos,INTEGER,"Puntos obtenidos: 3, 1 o 0",Calculado,2012-13,se conoce después del partido
+partidos_equipo.csv,tiros_favor,INTEGER,Tiros totales del equipo de la fila,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,tiros_contra,INTEGER,Tiros totales del rival,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,tiros_puerta_favor,INTEGER,Tiros a puerta del equipo de la fila,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,tiros_puerta_contra,INTEGER,Tiros a puerta del rival,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,corners_favor,INTEGER,Córners del equipo de la fila,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,corners_contra,INTEGER,Córners del rival,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,faltas_cometidas,INTEGER,Faltas cometidas por el equipo,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,faltas_recibidas,INTEGER,Faltas cometidas por el rival,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,amarillas,INTEGER,Tarjetas amarillas,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,rojas,INTEGER,Tarjetas rojas,football-data.co.uk,2012-13,se conoce después del partido
+partidos_equipo.csv,xg_favor,DOUBLE,Goles esperados (calidad de las ocasiones) del equipo de la fila,Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,xg_contra,DOUBLE,Goles esperados (calidad de las ocasiones) del rival,Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,npxg_favor,DOUBLE,Goles esperados sin penaltis del equipo de la fila,Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,npxg_contra,DOUBLE,Goles esperados sin penaltis del rival,Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,ppda_pases,INTEGER,Pases completados por el rival en su campo (numerador del PPDA). PPDA = suma de pases / suma de acciones; nunca promediar ratios,Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,ppda_acciones,INTEGER,Acciones defensivas del equipo en campo rival (denominador del PPDA),Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,ppda_pases_rival,INTEGER,Numerador del PPDA del rival (presión recibida),Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,ppda_acciones_rival,INTEGER,Denominador del PPDA del rival (presión recibida),Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,pases_profundos_favor,INTEGER,"Pases completados a menos de ~20 m de la portería rival, sin centros del equipo de la fila",Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,pases_profundos_contra,INTEGER,"Pases completados a menos de ~20 m de la portería rival, sin centros del rival",Understat,2014-15,se conoce después del partido
+partidos_equipo.csv,puntos_esperados,DOUBLE,Puntos esperados según el xG del partido,Understat,2014-15,se conoce después del partido
+equipos.csv,nombre,VARCHAR,Nombre del equipo,Calculado,2012-13,se conoce antes del partido
+equipos.csv,primera_temporada,VARCHAR,Primera temporada del equipo en Primera dentro del periodo,Calculado,2012-13,se conoce antes del partido
+equipos.csv,ultima_temporada,VARCHAR,Última temporada del equipo en Primera dentro del periodo,Calculado,2012-13,se conoce antes del partido
+equipos.csv,temporadas_en_primera,BIGINT,Temporadas en Primera dentro del periodo (2012-13 a 2025-26),Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,id_partido,int64,Identificador del partido (orden cronológico),Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,temporada,str,"Temporada, p. ej. 2014-15",Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,fecha,datetime64[us],Fecha oficial del partido,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,equipo,str,Equipo de la fila,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,rival,str,Rival del equipo de la fila,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,condicion,str,'local' o 'visitante' para el equipo de la fila,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,etapa,int32,Número de etapa continua del equipo en Primera (se reinicia al volver tras descender),Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,elo_antes,float64,"Elo del equipo antes del partido (K=20, H=65, margen de goles)",Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,elo_rival_antes,float64,Elo del rival antes del partido,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,puntuacion_esperada_elo,float64,"Puntuación esperada por el Elo para el equipo (victoria=1, empate=0,5), con ventaja de local",Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,periodo_ascenso,bool,"True en los 5 primeros partidos de un ascendido (K x 1,5; se excluyen del modelo)",Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,forma_puntos,float64,Media de puntos en los 5 partidos anteriores de la misma etapa,Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,n_forma,int64,Partidos que entran en forma_puntos (0-5),Calculado,2012-13,se conoce antes del partido
+forma_elo.csv,forma_xg_dif,float64,Media de xG a favor − xG en contra en los 5 partidos anteriores de la misma etapa,Understat,2014-15,se conoce antes del partido
+forma_elo.csv,n_forma_xg,int64,Partidos con xG que entran en forma_xg_dif (0-5; 0 antes de 2014-15),Understat,2014-15,se conoce antes del partido
+estilos_equipo_temporada.csv,temporada,str,Temporada,Calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,equipo,str,Equipo,Calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo,str,"Estilo asignado (k-means, k = 3): Presión alta y posesión / Bloque medio y juego limpio / Directo y físico",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,elo_medio,float64,Elo medio del equipo en la temporada (media del Elo antes de cada partido),Calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,puntos_pp,float64,Puntos por partido en la temporada,Calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,ppda,float64,PPDA de la temporada (suma de pases del rival / suma de acciones defensivas; bajo = más presión),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,ppda_rival,float64,PPDA del rival en la temporada (alto = el equipo tiene el balón),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,profundos_pp,float64,Pases profundos por partido,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,xg_por_tiro,float64,xG por tiro (suma de xG / suma de tiros),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,xg_por_tiro_contra,float64,xG por tiro en contra,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,faltas_pp,float64,Faltas cometidas por partido,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,pca_1,float64,"Eje 1 del mapa de estilos (+ con balón y llegada, − directo y físico)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,pca_2,float64,"Eje 2 del mapa de estilos (+ espera sin presionar, − presión alta)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_ppda,float64,"Coordenada de estilo: PPDA (bajo = más presión), estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_ppda_rival,float64,"Coordenada de estilo: PPDA del rival (alto = te dejan jugar), estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_profundos_pp,float64,"Coordenada de estilo: Pases profundos por partido, estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_xg_por_tiro,float64,"Coordenada de estilo: xG por tiro, estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_xg_por_tiro_contra,float64,"Coordenada de estilo: xG por tiro en contra, estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_equipo_temporada.csv,estilo_faltas_pp,float64,"Coordenada de estilo: Faltas por partido, estandarizada por temporada y descontado el Elo (desv. típica 1)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo: no usar para predecir partidos de esa temporada)
+estilos_catalogo.csv,estilo,str,Nombre del estilo,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,ppda,float64,Centro del estilo en la coordenada «PPDA (bajo = más presión)» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,ppda_rival,float64,Centro del estilo en la coordenada «PPDA del rival (alto = te dejan jugar)» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,profundos_pp,float64,Centro del estilo en la coordenada «Pases profundos por partido» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,xg_por_tiro,float64,Centro del estilo en la coordenada «xG por tiro» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,xg_por_tiro_contra,float64,Centro del estilo en la coordenada «xG por tiro en contra» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,faltas_pp,float64,Centro del estilo en la coordenada «Faltas por partido» (desv. típicas; estandarizada por temporada y descontado el Elo),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,equipos_temporada,int64,Número de equipos-temporada asignados al estilo,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+estilos_catalogo.csv,elo_medio,float64,Elo medio de los equipos-temporada del estilo,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+modelo_predicciones.csv,id_partido,int64,Identificador del partido (enlaza con partidos.csv),Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,temporada,str,Temporada,Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,conjunto,str,"validación (2019/20–2023/24, cada temporada predicha con las anteriores) o test (2024/25–2025/26, modelo entrenado hasta 2023/24)",Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,modelo,str,Frecuencias históricas / Solo Elo / Elo + forma (elegido) / Completo con estilo (informativo),Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,p_local,float64,Probabilidad de victoria local,Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,p_empate,float64,Probabilidad de empate,Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,p_visitante,float64,Probabilidad de victoria visitante,Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,resultado,str,"Resultado real: 1 local, X empate, 2 visitante",Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,prediccion,str,"Resultado más probable según el modelo (1, X o 2)",Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,acierto,bool,True si el resultado más probable es el que ocurrió,Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,rps,float64,Ranked Probability Score del partido (0 perfecto; menor es mejor),Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_predicciones.csv,log_loss,float64,Log-loss del partido (−log de la probabilidad del resultado real),Calculado (modelo de la fase 4),2019-20,"probabilidad calculada antes del partido, fuera de muestra (resultado, acierto, rps y log_loss se conocen después)"
+modelo_metricas.csv,conjunto,str,validación o test,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,modelo,str,"Modelo (incluye «Siempre gana el local», que solo tiene acierto)",Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,temporada,str,"Temporada, o «Todas» para el conjunto completo",Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,partidos,int64,Partidos evaluados,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,rps,float64,RPS medio,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,log_loss,float64,Log-loss medio,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_metricas.csv,acierto,float64,Proporción de aciertos,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,conjunto,str,validación o test,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,comparacion,str,"Qué se compara (añadir o quitar un bloque, o mejora sobre frecuencias)",Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,mejora_rps,float64,Reducción media del RPS (positivo = el modelo más completo es mejor),Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,ic95_inferior,float64,"Límite inferior del IC 95 % (bootstrap emparejado por partido, 1.000 remuestras)",Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,ic95_superior,float64,Límite superior del IC 95 %,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,supera_ruido,str,sí (IC por encima de 0) / no (incluye el 0) / empeora (IC por debajo de 0),Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_comparaciones.csv,pliegues_en_los_que_mejora,object,Temporadas de validación en las que mejora (solo validación),Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,conjunto,str,validación o test,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,orden,int64,Orden del tramo (para ordenar el gráfico),Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,tramo,str,Se sabe antes del partido / se decide en el juego (ocasiones creadas) / azar,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,modelo_antes_del_partido,str,Modelo usado como «lo que se sabe antes del partido»,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,rps,float64,RPS atribuido al tramo,Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+modelo_descomposicion.csv,porcentaje,float64,% de la incertidumbre inicial (RPS de frecuencias históricas),Calculado (modelo de la fase 4),2019-20,resultado de la evaluación (después de los partidos)
+suerte_equipo_temporada.csv,temporada,str,Temporada,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,equipo,str,Equipo,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,partidos,int64,Partidos jugados,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,puntos,float64,Puntos reales,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,puntos_esperados,float64,"Puntos esperados según el xG (Understat), redondeado a 1 decimal",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_puntos,float64,Puntos reales − puntos esperados,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_ataque,float64,Goles a favor − xG a favor (+ = marcó más de lo esperado),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_defensa,float64,xG en contra − goles en contra (+ = encajó menos de lo esperado),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_puntos_vs_liga,float64,Suerte en puntos menos la media de la liga esa temporada,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_ataque_vs_liga,float64,Suerte en ataque menos la media de la liga esa temporada,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_equipo_temporada.csv,suerte_defensa_vs_liga,float64,Suerte en defensa menos la media de la liga esa temporada,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,equipo,str,Equipo (con 5 temporadas o más en 2014/15–2025/26),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,medida,str,"puntos, ataque o defensa",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,temporadas,int64,Temporadas del equipo,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,media_por_temporada,float64,Media de la suerte relativa a la liga por temporada,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,ic95_inferior,float64,Límite inferior del IC 95 % de la media (t de Student),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,ic95_superior,float64,Límite superior del IC 95 %,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,temporadas_por_encima_de_la_liga,int64,Temporadas con suerte por encima de la media de la liga,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,p,float64,p-valor de la prueba t (media = 0),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,q_bh,float64,"p corregido por comparaciones múltiples (Benjamini-Hochberg, 72 pruebas)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistente.csv,persistente,bool,"True si q_bh < 0,10 (criterio fijado antes de mirar)",Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistencia_vueltas.csv,medida,str,Medida comparada entre la 1ª y la 2ª vuelta,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistencia_vueltas.csv,tipo,str,suerte (no debería repetirse) o rendimiento,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistencia_vueltas.csv,correlacion,float64,Correlación entre la 1ª y la 2ª vuelta del mismo equipo-temporada (240 pares),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistencia_vueltas.csv,ic95_inferior,float64,Límite inferior del IC 95 % (transformación de Fisher),Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+suerte_persistencia_vueltas.csv,ic95_superior,float64,Límite superior del IC 95 %,Understat + calculado,2014-15,se conoce al final de la temporada (descriptivo)
+sorpresas.csv,id_partido,int64,Identificador del partido (enlaza con partidos.csv),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,p_local,float64,Probabilidad de victoria local (modelo Elo + forma ajustado con todas las temporadas: dentro de muestra),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,p_empate,float64,Probabilidad de empate (dentro de muestra),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,p_visitante,float64,Probabilidad de victoria visitante (dentro de muestra),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,p_resultado,float64,Probabilidad que el modelo daba al resultado que ocurrió (menor = más sorprendente),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,equipo_sorprendente,str,Equipo que ganó (vacío si fue empate),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,xg_dif_sorprendente,float64,xG del ganador − xG del perdedor (vacío si fue empate),Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,tipo_sorpresa,str,merecida (creó más xG) / con suerte (creó menos xG) / empate,Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+sorpresas.csv,gran_sorpresa,bool,"True si p_resultado < 0,15",Calculado (modelo de la fase 5) + Understat,2014-15,después del partido (descriptivo: probabilidades dentro de muestra)
+partidos_anomalos.csv,id_partido,int64,Identificador del partido (enlaza con partidos.csv),football-data.co.uk + Understat + calculado,2014-15,después del partido
+partidos_anomalos.csv,anomalia,float64,Puntuación de anomalía del Isolation Forest (mayor = más raro; 18 estadísticas del partido),football-data.co.uk + Understat + calculado,2014-15,después del partido
+partidos_anomalos.csv,ranking,int64,Posición de 1 (más anómalo) a 4.560,football-data.co.uk + Understat + calculado,2014-15,después del partido
+partidos_anomalos.csv,percentil,float64,Percentil de anomalía (100 = el más raro),football-data.co.uk + Understat + calculado,2014-15,después del partido
+partidos_anomalos.csv,variables_extremas,str,"Hasta 4 estadísticas con |z| > 2,5 (L = local, V = visitante)",football-data.co.uk + Understat + calculado,2014-15,después del partido

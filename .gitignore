@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# Understat no permite claramente redistribuir sus datos: se regeneran con src/download.py
+data/raw/understat/
+# Las tablas limpias contienen datos de Understat: se regeneran ejecutando notebooks/01_integracion_calidad.ipynb
+data/processed/partidos.csv
+data/processed/partidos_equipo.csv
+# Contiene la forma en xG (derivada de Understat): se regenera con notebooks/02_forma_y_fuerza.ipynb
+data/processed/forma_elo.csv
+# Variables de estilo por equipo-temporada (derivadas de Understat): se regeneran con notebooks/03_estilo.ipynb
+data/processed/estilos_equipo_temporada.csv
+# Exportaciones para Power BI con datos por partido o equipo-temporada derivados de Understat: notebooks 04 y 05
+data/processed/modelo_predicciones.csv
+data/processed/suerte_equipo_temporada.csv
+data/processed/sorpresas.csv
+data/processed/partidos_anomalos.csv
+
+# El informe de Power BI lleva los datos (Understat) incrustados: se publican capturas y PDF, no el .pbix
+powerbi/*.pbix
+powerbi/*.pbix.bak
