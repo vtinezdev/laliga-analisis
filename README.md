@@ -1,4 +1,4 @@
-# ⚽ ¿Qué decide un partido de LaLiga?
+# ¿Qué decide un partido de LaLiga?
 
 **Fuerza, forma, estilo o azar.** Análisis de 12 temporadas de LaLiga (2014/15–2025/26, 4.560 partidos) con datos públicos de resultados, estadísticas y xG.
 
