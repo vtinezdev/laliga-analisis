@@ -1,7 +1,7 @@
 conjunto,orden,tramo,modelo_antes_del_partido,rps,porcentaje
-validación,1,Se sabe antes del partido,Completo con estilo (informativo),0.028074839743088303,12.44885024987672
-validación,2,Se decide en el juego (ocasiones creadas),Completo con estilo (informativo),0.034098891729440556,15.120014956846557
-validación,3,Azar,Completo con estilo (informativo),0.16334781613678812,72.43113479327671
-test,1,Se sabe antes del partido,Elo + forma (elegido),0.02722849601305463,12.051657630269888
-test,2,Se decide en el juego (ocasiones creadas),Elo + forma (elegido),0.02850497105283456,12.61664073273861
-test,3,Azar,Elo + forma (elegido),0.17019807570101955,75.33170163699151
+validación,1,Se sabe antes del partido,Completo con estilo (informativo),0.02807483444575301,12.448847900950266
+validación,2,Se decide en el juego (ocasiones creadas),Completo con estilo (informativo),0.0340988971543342,15.120017362334504
+validación,3,Azar,Completo con estilo (informativo),0.16334781600922976,72.43113473671524
+test,1,Se sabe antes del partido,Elo + forma (elegido),0.027228497240195604,12.051658173417142
+test,2,Se decide en el juego (ocasiones creadas),Elo + forma (elegido),0.028504968890485316,12.616639775657
+test,3,Azar,Elo + forma (elegido),0.17019807663622782,75.33170205092586

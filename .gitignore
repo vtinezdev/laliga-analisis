@@ -1,6 +1,11 @@
 .venv/
 __pycache__/
 .ipynb_checkpoints/
+.pytest_cache/
+
+# Documentación privada de estudio (solo en local, nunca se publica)
+private/
+docs_private/
 
 # Understat no permite claramente redistribuir sus datos: se regeneran con src/download.py
 data/raw/understat/
