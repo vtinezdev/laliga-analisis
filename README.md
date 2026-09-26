@@ -197,4 +197,4 @@ reports/figures/     Gráficos
 ## Próximos pasos
 
 - Informe en Power BI (fase 6).
-- Aplicar el modelo, sin reentrenarlo, a la temporada 2026/27 como validación prospectiva, con un prerregistro real: plan publicado y fechado (p. ej., con una etiqueta de Git o un registro externo) antes de que empiece.
+- Aplicar el modelo, sin reentrenarlo, a la temporada 2026/27 como validación prospectiva.
