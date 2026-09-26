@@ -61,7 +61,7 @@ data/raw (football-data + Understat, nunca se editan)
                      └─ 6 · Power BI (en preparación)
 ```
 
-Las funciones críticas (Elo, métricas, modelo ordinal, coordenadas de estilo, pliegues temporales) están en [`src/laliga/`](src/laliga) y se prueban en [`tests/`](tests). Los notebooks las importan y explican el método: por ejemplo, el Elo (fórmulas, K, H, ascendidos, un partido paso a paso) está explicado en la [sección 2 del notebook 02](notebooks/02_forma_y_fuerza.ipynb).
+Las funciones críticas (Elo, métricas, modelo ordinal, coordenadas de estilo, pliegues temporales, comparación estadística de modelos) están en [`src/laliga/`](src/laliga) y se prueban en [`tests/`](tests). Los notebooks las importan y explican el método: por ejemplo, el Elo (fórmulas, K, H, ascendidos, un partido paso a paso) está explicado en la [sección 2 del notebook 02](notebooks/02_forma_y_fuerza.ipynb).
 
 ## Resultados del modelo 1X2 (test)
 
@@ -76,7 +76,7 @@ Regresión logística **ordinal** (respeta el orden victoria local > empate > vi
 | *Techo: con el xG del propio partido (no es una predicción)* | *0,1702* | *0,8815* | *59,7 %* |
 
 - **Qué es el test:** los 705 partidos de 2024/25 (352) y 2025/26 (353), del 15/08/2024 al 24/05/2026. Son los 760 partidos de esas temporadas menos 55 con un ascendido en sus primeros partidos (sin 10 partidos previos para la ventana de estilo), excluidos igual en todos los modelos. Es una muestra de dos temporadas concretas: sirve para comprobar lo decidido en validación, no como medida universal del rendimiento.
-- Las diferencias entre los tres modelos con Elo **no superan el ruido** (IC 95 % por *bootstrap* emparejado; el modelo con estilo era peor en validación). Con 705 partidos, el error típico del acierto es ≈ 1,9 puntos.
+- Las diferencias entre los tres modelos con Elo son **compatibles con la variabilidad muestral**: ninguna aporta evidencia estadística suficiente tras corregir por comparaciones múltiples (ver la tabla siguiente; el modelo con estilo, además, era peor en validación).
 - **Ningún modelo predice nunca un empate** como resultado más probable (su probabilidad no pasa del ~31 %), así que el ~25 % de empates cuenta siempre como fallo: el acierto sirve para comunicar, no para comparar modelos.
 - **Calibración:** fuera de muestra, las probabilidades coinciden con las frecuencias reales (p. ej., lo que el modelo daba con menos de un 10 % ocurrió el 7,5 % de las veces, frente a un 7,2 % predicho).
 - Con Elo y xG reciente en el modelo, la forma en **puntos** tiene coeficiente **negativo**: indicio de que los puntos "de más" respecto al juego son suerte que no se mantiene (asociación condicional, no una mejora predictiva).
@@ -84,6 +84,35 @@ Regresión logística **ordinal** (respeta el orden victoria local > empate > vi
 <p align="center">
   <img src="reports/figures/04_que_decide_un_partido.png" width="80%">
   <img src="reports/figures/04_modelos_test.png" width="70%">
+</p>
+
+### ¿Hay evidencia estadística de que un modelo mejore a otro?
+
+Análisis añadido **después** de evaluar el test ([sección 18 del notebook 04](notebooks/04_modelo.ipynb), código en [`src/laliga/comparacion.py`](src/laliga/comparacion.py)). No cambia ningún modelo ni decisión, y no se usa para elegir modelo. Diferencia = **modelo nuevo − modelo base**, partido a partido: en RPS y *log-loss*, **negativa = mejora**; en acierto, positiva = mejora.
+
+| Comparación (705 partidos) | Métrica | Diferencia | IC 95 % | p | p Holm | ¿Evidencia de diferencia? |
+|---|---|---:|---:|---:|---:|---|
+| Elo → Elo + forma | RPS | +0,0001 | [−0,0021; +0,0022] | 0,945 | 1,00 | No |
+| Elo → Elo + forma | Log-loss | +0,0010 | [−0,0061; +0,0080] | 0,775 | 1,00 | No |
+| Elo → Elo + forma | Acierto | +1,0 pp | [−0,7; +2,5] pp | 0,281 | 1,00 | No |
+| Elo → Elo + forma + estilo | RPS | −0,0013 | [−0,0039; +0,0013] | 0,333 | 1,00 | No |
+| Elo → Elo + forma + estilo | Log-loss | −0,0035 | [−0,0119; +0,0049] | 0,414 | 1,00 | No |
+| Elo → Elo + forma + estilo | Acierto | +2,3 pp | [+0,4; +3,8] pp | 0,017 | 0,15 | No (solo sin corregir) |
+| Elo + forma → Elo + forma + estilo | RPS | −0,0014 | [−0,0031; +0,0003] | 0,113 | 0,75 | No |
+| Elo + forma → Elo + forma + estilo | Log-loss | −0,0045 | [−0,0099; +0,0008] | 0,101 | 0,75 | No |
+| Elo + forma → Elo + forma + estilo | Acierto | +1,3 pp | [−0,2; +2,4] pp | 0,093 | 0,75 | No |
+
+- **Emparejado:** los tres modelos predicen los mismos 705 partidos (comprobado con tests). Casi toda la variabilidad del RPS se debe a lo difícil que es cada partido, y es común a los tres, así que se comparan las pérdidas **partido a partido** y no las medias como muestras independientes.
+- **RPS y *log-loss*:** IC 95 % por ***bootstrap* emparejado** (se remuestrean partidos y la misma remuestra se aplica a los dos modelos; percentil; 10.000 remuestras; semilla 42) y ***t* pareada sobre las diferencias de pérdida**, que contrasta si la pérdida media es la misma. Para predicciones a horizonte 1 es algebraicamente idéntica al contraste de Diebold-Mariano con la corrección de Harvey-Leybourne-Newbold (comprobado en los tests). Se descartó Wilcoxon porque contrasta la mediana de las diferencias y lo que importa es la pérdida **media**.
+- **Acierto:** **McNemar exacto** (solo informan los 23–40 partidos en que acierta uno de los dos modelos) con un IC exacto condicionado a esos partidos, coherente con él.
+- **Multiplicidad:** **Holm** sobre la familia de 9 contrastes (3 comparaciones × 3 métricas; controla la probabilidad de al menos un falso positivo con cualquier dependencia entre ellos). Por eso el acierto de la segunda comparación no cuenta como evidencia: su p = 0,017 sin ajustar pasa a 0,15 con Holm, y su IC simultáneo (Bonferroni) incluye el 0, aunque el IC 95 % individual, que no está ajustado, no lo incluya. Es el tipo de resultado aislado que puede aparecer por azar al hacer varias comparaciones.
+- **Conclusión:** "evidencia estadística" = p ajustado < 0,05 bajo este procedimiento, y **ninguna comparación la alcanza**. Las diferencias observadas son compatibles con la variabilidad muestral: aunque el modelo con estilo tiene mejores valores puntuales en las tres métricas, no se puede afirmar una mejora estadísticamente demostrada. Esto **no demuestra que los modelos sean iguales** ni que la forma o el estilo carezcan de información predictiva: los IC dejan fuera mejoras de RPS de la forma mayores de ~0,002 (≈ 1 %), pero son compatibles con mejoras del estilo de hasta ~0,003–0,004 o con pequeños empeoramientos.
+- **Tamaño:** en RPS y *log-loss*, el cambio relativo respecto al modelo base es como mucho del 0,7 % (diferencia / valor del modelo base). Como escala, esas diferencias equivalen como mucho al 5,4 % de la mejora del Elo sobre las frecuencias históricas (diferencia / (Elo − frecuencias)).
+- **Dependencia entre partidos:** el *bootstrap* supone partidos independientes. Una sensibilidad parcial, con *bootstrap* por semana natural y por equipo local-temporada, no cambia qué intervalos incluyen el 0, y la autocorrelación de las diferencias es pequeña (máximo 0,09). Son diagnósticos, no una prueba de independencia.
+- **Qué no dice:** no demuestra causalidad, no incluye la incertidumbre del entrenamiento (compara estos modelos ya ajustados) y no corrige ninguna de las limitaciones de abajo, en especial el posible sesgo *post hoc* de las fases 2–3.
+
+<p align="center">
+  <img src="reports/figures/04_comparacion_estadistica.png" width="90%">
 </p>
 
 ## Hallazgos por fase
@@ -109,7 +138,7 @@ Regresión logística **ordinal** (respeta el orden victoria local > empate > vi
 - **Todo lo que se ajusta, se ajusta con el entrenamiento.** Escalado, regresión que descuenta la calidad del estilo, regularización (elegida con la última temporada del entrenamiento) y frecuencias de referencia; el estilo se estandariza con la temporada anterior, ya conocida.
 - **Parámetros del Elo fijados a priori** (K = 20, ventaja de local H = 65, margen de goles de eloratings.net) y nunca reajustados tras ver los datos. H = 65 es una decisión del proyecto, no un valor "correcto" demostrado; su papel y sus efectos se explican en la [sección 2 del notebook 02](notebooks/02_forma_y_fuerza.ipynb).
 - **Test apartado.** 2024/25–2025/26 no se usaron para elegir modelo, variables ni regularización: se separan con un `assert` y solo se evalúan al final. El modelo y la única comparación decisiva están escritos en la [sección 12 del notebook 04](notebooks/04_modelo.ipynb), y la elección se reproduce ejecutando solo la validación. No es un prerregistro formal (ver limitaciones).
-- **Comparaciones con incertidumbre.** Diferencias de RPS partido a partido con IC 95 % por *bootstrap* emparejado y consistencia entre pliegues; *bootstrap* por equipo-temporada cuando las observaciones se solapan; Benjamini-Hochberg para las 72 pruebas de suerte persistente.
+- **Comparaciones con incertidumbre.** Diferencias de RPS partido a partido con IC 95 % por *bootstrap* emparejado y consistencia entre pliegues; en test, *t* pareada de las diferencias de pérdida, McNemar exacto y corrección de Holm; *bootstrap* por equipo-temporada cuando las observaciones se solapan; Benjamini-Hochberg para las 72 pruebas de suerte persistente.
 - **Mismas exclusiones para todos los modelos**, decididas con información previa al partido: ascendidos en sus 5 primeros partidos, partidos sin 5 partidos previos de forma en xG (inicio de 2014/15) y equipos con menos de 10 partidos en la ventana de estilo (en la práctica, los ascendidos en sus ~10 primeros partidos); sin imputar valores.
 
 ## Limitaciones
@@ -119,7 +148,7 @@ Regresión logística **ordinal** (respeta el orden victoria local > empate > vi
 - **El xG y los puntos esperados son modelos de Understat** (tirador y portero "medios"): lo que llamamos azar incluye también lo que el xG no mide, y el reparto antes del partido / juego / azar es orientativo, no una descomposición exacta.
 - **xG recalculado a posteriori:** el xG histórico lo genera el modelo actual de Understat, que puede haberse ajustado con temporadas posteriores. La forma en xG usa solo partidos anteriores, pero en un uso real se dispondría del xG calculado en su momento. Efecto previsiblemente pequeño, no cuantificable con estos datos.
 - **Elo con supuestos simples:** la regla de ascendidos (heredan el Elo medio de los descendidos) los infravalora, documentado y no reajustado para no ajustar a los datos; H = 65 es una decisión del proyecto sin fuente externa y fija en el tiempo, aunque la ventaja de local real varía (mínima en 2020/21); el multiplicador de margen no corrige la inflación de los favoritos.
-- **Test de 705 partidos y dos temporadas:** basta para confirmar la mejora grande del Elo (0,027 de RPS), pero no para detectar mejoras menores de ~0,002; las diferencias de acierto entre modelos están dentro del ruido. Describe esas dos temporadas y excluye los primeros partidos de los ascendidos. No se amplió a posteriori: cambiar el corte después de ver resultados sería otra forma de ajustar a los datos.
+- **Test de 705 partidos y dos temporadas:** basta para confirmar la mejora grande del Elo (0,027 de RPS), pero no para detectar mejoras menores de ~0,002; ninguna diferencia entre los modelos con Elo (RPS, *log-loss* ni acierto) supera la corrección por comparaciones múltiples. Describe esas dos temporadas y excluye los primeros partidos de los ascendidos. No se amplió a posteriori: cambiar el corte después de ver resultados sería otra forma de ajustar a los datos.
 - **El test no es completamente virgen:** sus temporadas aparecen en los análisis descriptivos de las fases 2 y 3, que inspiraron qué bloques probar. Esa contaminación favorecería encontrar mejoras de la forma o del estilo; no se encontró ninguna.
 - **Early stopping del *gradient boosting*:** usa un 20 % aleatorio (no temporal) del entrenamiento para decidir cuándo parar. No toca datos de validación ni de test y solo afecta a esa comprobación no lineal, no al modelo elegido.
 - **No hubo un prerregistro formal.** El historial de Git se consolidó en un único commit al publicar el repositorio y el plan del test no se depositó en ningún registro externo con fecha. **Lo que sí se puede comprobar en el código:** los parámetros del Elo (K, H), las ventanas y las exclusiones son constantes sin ninguna búsqueda de valores; la regularización se elige dentro del entrenamiento; el test se aparta con un `assert`; y el modelo elegido se reproduce usando solo la validación. **Lo que no se puede demostrar:** el orden temporal, es decir, que esas decisiones y el plan de la sección 12 se escribieran antes de ver los resultados del test.
@@ -149,7 +178,7 @@ python src/pipeline.py          # descarga lo que falte, ejecuta los notebooks 0
 pytest
 ```
 
-82 tests en [`tests/`](tests): fórmulas y reglas del Elo, **invarianza al futuro** del Elo y de la forma, recálculo independiente de la forma publicada, transformaciones ajustadas solo con el entrenamiento, pliegues temporales, RPS y log-loss, modelo ordinal frente a statsmodels, validadores de descarga y validación de los datos brutos y procesados. Los tests que necesitan datos de Understat se saltan si aún no se han descargado.
+109 tests en [`tests/`](tests): fórmulas y reglas del Elo, **invarianza al futuro** del Elo y de la forma, recálculo independiente de la forma publicada, transformaciones ajustadas solo con el entrenamiento, pliegues temporales, RPS y log-loss, modelo ordinal frente a statsmodels, comparación estadística de modelos (alineación de partidos, *bootstrap* emparejado y reproducible, contrastes frente a scipy/statsmodels), validadores de descarga y validación de los datos brutos y procesados. Los tests que necesitan datos de Understat se saltan si aún no se han descargado.
 
 ## Estructura
 
@@ -160,7 +189,7 @@ data/processed/      Tablas limpias, variables y resultados exportados + diccion
 notebooks/           Análisis paso a paso (01 → 05), con las decisiones razonadas
 src/download.py      Descarga y validación de los datos brutos
 src/pipeline.py      Reproducción completa
-src/laliga/          Elo, métricas, modelo ordinal, coordenadas de estilo, validación temporal
+src/laliga/          Elo, métricas, modelo ordinal, coordenadas de estilo, validación temporal, comparación de modelos
 tests/               Tests (pytest)
 reports/figures/     Gráficos
 ```
